@@ -1,6 +1,6 @@
-import { AppRouter } from './routes/AppRouter';
-import { Sidebar } from './features/shared/components/Sidebar';
-import { TopBar } from './features/shared/components/TopBar';
+import { AppRouter } from "./routes/AppRouter";
+import { Sidebar } from "./features/shared/components/Sidebar";
+import { TopBar } from "./features/shared/components/TopBar";
 
 function App() {
   return (
