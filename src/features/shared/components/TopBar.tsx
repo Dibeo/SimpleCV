@@ -20,47 +20,39 @@ export const TopBar = () => {
     }
 
     Swal.fire({
-      title: "Génération du PDF...",
+      title: "Préparation de l'impression...",
+      text: "Le dialogue d'impression va s'ouvrir. Pensez à cocher 'Graphiques d'arrière-plan'.",
+      icon: "info",
+      timer: 2000,
+      showConfirmButton: false,
       didOpen: () => {
         Swal.showLoading();
       },
-      allowOutsideClick: false,
     });
 
     try {
-      let dataForPdf = { ...data };
+      let dataForPdf = JSON.parse(JSON.stringify(data)); // Clone profond
 
-      if (
-        data.personalInfo.photoUrl &&
-        data.personalInfo.photoUrl.startsWith("http")
-      ) {
+      // Conversion de la photo en Base64 pour éviter les blocages CORS
+      if (data.personalInfo.photoUrl && data.personalInfo.photoUrl.startsWith("http")) {
         try {
-          const base64 = await getBase64ImageFromURL(
-            data.personalInfo.photoUrl
-          );
-          dataForPdf = {
-            ...data,
-            personalInfo: { ...data.personalInfo, photoUrl: base64 },
-          };
+          const base64 = await getBase64ImageFromURL(data.personalInfo.photoUrl);
+          dataForPdf.personalInfo.photoUrl = base64;
         } catch (e) {
           console.warn("Échec conversion photo, export sans image", e);
-          dataForPdf.personalInfo.photoUrl = undefined;
         }
       }
 
-      exportCvPdf(dataForPdf);
+      // APPEL DU MOTEUR NATIF
+      // On passe les données converties au moteur qui va gérer le portail et l'impression
+      await exportCvPdf(dataForPdf);
 
-      Swal.fire({
-        icon: "success",
-        title: "Export réussi",
-        timer: 1500,
-        showConfirmButton: false,
-      });
     } catch (error) {
+      console.error(error);
       Swal.fire({
         icon: "error",
         title: "Erreur",
-        text: "Impossible de générer le PDF.",
+        text: "Impossible d'ouvrir le module d'impression.",
       });
     }
   };

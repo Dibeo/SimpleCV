@@ -34,7 +34,7 @@ const CONTACT_ICONS: Record<string, any> = {
 };
 
 export const ModernTheme = ({ data }: { data: CVData }) => (
-  <div className="flex h-full min-h-[297mm] bg-white text-slate-800 font-sans">
+  <div className="flex h-full min-h-[297mm] bg-white text-slate-800 font-sans"  id="cv-to-print">
     <div className="w-[35%] bg-[#1e293b] text-white p-8 flex flex-col gap-8 shadow-inner">
       <div className="text-center">
         {data.personalInfo.photoUrl && (
