@@ -34,7 +34,10 @@ const CONTACT_ICONS: Record<string, any> = {
 };
 
 export const ModernTheme = ({ data }: { data: CVData }) => (
-  <div className="flex h-full min-h-[297mm] bg-white text-slate-800 font-sans"  id="cv-to-print">
+  <div
+    className="flex h-full min-h-[297mm] bg-white text-slate-800 font-sans"
+    id="cv-to-print"
+  >
     <div className="w-[35%] bg-[#1e293b] text-white p-8 flex flex-col gap-8 shadow-inner">
       <div className="text-center">
         {data.personalInfo.photoUrl && (
@@ -91,6 +94,14 @@ export const ModernTheme = ({ data }: { data: CVData }) => (
             {data.personalInfo.socials.map((social) => {
               const Icon =
                 SOCIAL_ICONS[social.platform.toLowerCase()] || ExternalLink;
+              const hrefUrl = social.url.startsWith("http")
+                ? social.url
+                : `https://${social.url}`;
+              const displayUrl = social.url
+                .replace(/^https?:\/\//, "")
+                .replace(/^www\./, "")
+                .replace(/\/$/, "");
+
               return (
                 <div key={social.id} className="flex items-center gap-3 group">
                   <div className="p-2 bg-slate-800 rounded-lg group-hover:bg-blue-600 transition-colors">
@@ -104,12 +115,12 @@ export const ModernTheme = ({ data }: { data: CVData }) => (
                       {social.platform}
                     </p>
                     <a
-                      href={social.url}
+                      href={hrefUrl}
                       target="_blank"
                       rel="noreferrer"
                       className="text-[10px] text-slate-200 truncate block hover:text-blue-400 transition-colors"
                     >
-                      {social.url.replace(/^https?:\/\//, "")}
+                      {displayUrl}
                     </a>
                   </div>
                 </div>

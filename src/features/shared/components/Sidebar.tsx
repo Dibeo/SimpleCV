@@ -7,7 +7,7 @@ export const Sidebar = () => {
   const { data, updateData } = useCvStore();
 
   const navItems = [
-    { to: "/", label: "Tableau de bord", icon: <LayoutDashboard size={20} /> },
+    //{ to: "/", label: "Tableau de bord", icon: <LayoutDashboard size={20} /> },
     { to: "/editor", label: "Éditeur", icon: <PlusCircle size={20} /> },
   ];
 
@@ -25,7 +25,7 @@ export const Sidebar = () => {
     <aside className="w-64 bg-slate-800 border-r border-slate-700 flex flex-col shrink-0">
       <div className="p-6">
         <h1 className="text-xl font-bold text-blue-400 flex items-center gap-2">
-          <FileText size={24} /> CV.Gen
+          <img src="/icon-nobg.png" className="w-16" /> SimpleCV
         </h1>
       </div>
 

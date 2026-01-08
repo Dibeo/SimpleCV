@@ -31,22 +31,21 @@ export const TopBar = () => {
     });
 
     try {
-      let dataForPdf = JSON.parse(JSON.stringify(data)); // Clone profond
-
-      // Conversion de la photo en Base64 pour éviter les blocages CORS
-      if (data.personalInfo.photoUrl && data.personalInfo.photoUrl.startsWith("http")) {
+      let dataForPdf = JSON.parse(JSON.stringify(data));
+      if (
+        data.personalInfo.photoUrl &&
+        data.personalInfo.photoUrl.startsWith("http")
+      ) {
         try {
-          const base64 = await getBase64ImageFromURL(data.personalInfo.photoUrl);
+          const base64 = await getBase64ImageFromURL(
+            data.personalInfo.photoUrl
+          );
           dataForPdf.personalInfo.photoUrl = base64;
         } catch (e) {
           console.warn("Échec conversion photo, export sans image", e);
         }
       }
-
-      // APPEL DU MOTEUR NATIF
-      // On passe les données converties au moteur qui va gérer le portail et l'impression
       await exportCvPdf(dataForPdf);
-
     } catch (error) {
       console.error(error);
       Swal.fire({
@@ -61,7 +60,7 @@ export const TopBar = () => {
     <header className="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-between px-8 transition-colors sticky top-0 z-50">
       <div className="flex items-center gap-4">
         <h1 className="font-bold text-slate-800 dark:text-white text-lg">
-          <span className="text-blue-500">CV</span>-Editor
+          Simple<span className="text-blue-500">CV</span>
         </h1>
       </div>
 
