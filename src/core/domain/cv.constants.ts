@@ -3,14 +3,14 @@ import { type CVData } from "./cv.types";
 export const INITIAL_CV_DATA: CVData = {
   id: crypto.randomUUID(),
   metadata: {
-    name: "CV Alice Blue - 2024",
+    name: "CV Alice Blue - 2026",
     lastModified: Date.now(),
     layout: "modern"
   },
   personalInfo: {
     fullName: "Alice Blue",
     title: "Développeuse Fullstack Senior",
-    summary: "Développeuse passionnée avec 5 ans d'expérience dans la création d'applications web scalables. Experte sur l'écosystème React et Node.js, je mets un point d'honneur à l'accessibilité et à la performance logicielle. Adepte des méthodologies Agile et du TDD.",
+    summary: "Développeuse passionnée avec 7 ans d'expérience dans la création d'applications web scalables. Experte sur l'écosystème React et Node.js, je mets un point d'honneur à l'accessibilité et à la performance logicielle. Adepte des méthodologies Agile et du TDD.",
     email: "alice.blue@example.com",
     phone: "+33 6 12 34 56 78",
     address: "Bordeaux, France",
@@ -83,4 +83,14 @@ export const INITIAL_CV_DATA: CVData = {
     "AWS", 
     "Jest & Cypress"
   ],
+  languages: [
+    { id: crypto.randomUUID(), name: "Français", level: "Maternel" },
+    { id: crypto.randomUUID(), name: "Anglais", level: "C1 - Professionnel" },
+    { id: crypto.randomUUID(), name: "Espagnol", level: "B1 - Intermédiaire" },
+  ],
+  certifications: [
+    { id: crypto.randomUUID(), name: "AWS Certified Developer – Associate", issuer: "Amazon Web Services", year: "2023" },
+    { id: crypto.randomUUID(), name: "Professional Scrum Master I", issuer: "Scrum.org", year: "2022" },
+    { id: crypto.randomUUID(), name: "Permis de conduire (B)", issuer: "France", year: "2014" },
+  ]
 };

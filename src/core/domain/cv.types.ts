@@ -16,6 +16,18 @@ export interface Education {
   skills: string[];
 }
 
+export interface Language {
+  id: string;
+  name: string;
+  level: string;
+}
+export interface Certification {
+  id: string;
+  name: string;
+  issuer?: string;
+  year?: string;
+}
+
 export interface CVData {
   id: string;
   metadata: {
@@ -37,4 +49,6 @@ export interface CVData {
   experiences: Experience[];
   educations: Education[];
   skills: string[];
+  languages: Language[];
+  certifications: Certification[];
 }
