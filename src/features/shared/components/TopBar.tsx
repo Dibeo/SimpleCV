@@ -60,7 +60,7 @@ export const TopBar = () => {
     <header className="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-between px-8 transition-colors sticky top-0 z-50">
       <div className="flex items-center gap-4">
         <h1 className="font-bold text-slate-800 dark:text-white text-lg">
-          Simple<span className="text-blue-500">CV</span>
+          Clear<span className="text-blue-500">CV</span>
         </h1>
       </div>
 
