@@ -10,6 +10,7 @@ import {
   ExternalLink,
   Youtube,
   Instagram,
+  Award,
 } from "lucide-react";
 
 const SOCIAL_ICONS: Record<string, any> = {
@@ -35,7 +36,7 @@ const CONTACT_ICONS: Record<string, any> = {
 
 export const ModernTheme = ({ data }: { data: CVData }) => (
   <div
-    className="flex h-full min-h-[297mm] bg-white text-slate-800 font-sans"
+    className="flex min-h-[297mm] min-h-[297mm] bg-white text-slate-800 font-sans"
     id="cv-to-print"
   >
     <div className="w-[35%] bg-[#1e293b] text-white p-8 flex flex-col gap-8 shadow-inner">
@@ -101,7 +102,6 @@ export const ModernTheme = ({ data }: { data: CVData }) => (
                 .replace(/^https?:\/\//, "")
                 .replace(/^www\./, "")
                 .replace(/\/$/, "");
-
               return (
                 <div key={social.id} className="flex items-center gap-3 group">
                   <div className="p-2 bg-slate-800 rounded-lg group-hover:bg-blue-600 transition-colors">
@@ -139,10 +139,30 @@ export const ModernTheme = ({ data }: { data: CVData }) => (
             {data.skills.map((s, i) => (
               <span
                 key={i}
-                className="bg-slate-800 text-slate-300 px-2 py-1 rounded text-[9px] border border-slate-700 hover:border-blue-500 transition-colors cursor-default"
+                className="bg-slate-800 text-slate-300 px-2 py-1 rounded text-[9px] border border-slate-700"
               >
                 {s}
               </span>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {data.languages && data.languages.length > 0 && (
+        <section>
+          <h2 className="text-xs font-bold text-blue-400 tracking-[0.2em] uppercase border-b border-slate-700 pb-2 mb-4">
+            Langues
+          </h2>
+          <div className="space-y-3">
+            {data.languages.map((lang) => (
+              <div key={lang.id} className="flex items-center justify-between">
+                <span className="text-[10px] font-bold text-slate-200">
+                  {lang.name}
+                </span>
+                <span className="text-[9px] text-blue-400 italic font-medium">
+                  {lang.level}
+                </span>
+              </div>
             ))}
           </div>
         </section>
@@ -181,7 +201,7 @@ export const ModernTheme = ({ data }: { data: CVData }) => (
                     {exp.company}
                   </p>
                 </div>
-                <span className="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md border border-blue-100">
+                <span className="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md border border-blue-100 shrink-0">
                   {exp.startDate} — {exp.endDate}
                 </span>
               </div>
@@ -219,6 +239,42 @@ export const ModernTheme = ({ data }: { data: CVData }) => (
                 <p className="text-xs text-slate-400 font-bold tabular-nums shrink-0">
                   {edu.year}
                 </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {data.certifications && data.certifications.length > 0 && (
+        <section>
+          <h2 className="text-sm font-bold text-slate-800 tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
+            <span className="w-10 h-[2px] bg-blue-600"></span> Certificats &
+            Permis
+          </h2>
+          <div className="grid grid-cols-1 gap-4">
+            {data.certifications.map((cert) => (
+              <div
+                key={cert.id}
+                className="flex items-center gap-4 bg-slate-50 p-3 rounded-lg border border-slate-100"
+              >
+                <div className="p-2 bg-white rounded-md shadow-sm">
+                  <Award size={16} className="text-blue-600" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex justify-between items-center">
+                    <p className="text-[12px] font-bold text-slate-800">
+                      {cert.name}
+                    </p>
+                    <span className="text-[10px] text-slate-400 font-bold">
+                      {cert.year}
+                    </span>
+                  </div>
+                  {cert.issuer && (
+                    <p className="text-[10px] text-blue-600 font-medium uppercase tracking-wider">
+                      {cert.issuer}
+                    </p>
+                  )}
+                </div>
               </div>
             ))}
           </div>

@@ -3,6 +3,8 @@ import { FormContacts } from "./FormContacts";
 import { FormSocials } from "./FormSocials";
 import { FormExperiences } from "./FormExperiences";
 import { FormSkills } from "./FormSkills";
+import { FormLanguages } from "./FormLanguages";
+import { FormCertifications } from "./FormsCertifications";
 
 export const CvForm = () => {
   return (
@@ -12,6 +14,8 @@ export const CvForm = () => {
       <FormSocials />
       <FormSkills />
       <FormExperiences />
+      <FormLanguages />
+      <FormCertifications />
     </div>
   );
 };
