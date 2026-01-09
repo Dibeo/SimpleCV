@@ -38,11 +38,8 @@ export interface CVData {
   personalInfo: {
     fullName: string;
     summary: string;
-    email: string;
-    phone: string;
     title: string;
     photoUrl?: string;
-    address: string;
     contacts: { id: string; label: string; value: string }[];
     socials: { id: string; platform: string; url: string }[];
   };

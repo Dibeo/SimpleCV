@@ -11,9 +11,6 @@ export const INITIAL_CV_DATA: CVData = {
     fullName: "Alice Blue",
     title: "Développeuse Fullstack Senior",
     summary: "Développeuse passionnée avec 7 ans d'expérience dans la création d'applications web scalables. Experte sur l'écosystème React et Node.js, je mets un point d'honneur à l'accessibilité et à la performance logicielle. Adepte des méthodologies Agile et du TDD.",
-    email: "alice.blue@example.com",
-    phone: "+33 6 12 34 56 78",
-    address: "Bordeaux, France",
     photoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alice",
     contacts: [
       { id: crypto.randomUUID(), label: "Email", value: "alice.blue@dev.com" },

@@ -24,6 +24,17 @@ const SOCIAL_ICONS: Record<string, any> = {
   instagram: Instagram,
 };
 
+const CONTACT_ICONS: Record<string, any> = {
+  email: Mail,
+  mail: Mail,
+  téléphone: Phone,
+  phone: Phone,
+  tel: Phone,
+  adresse: MapPin,
+  address: MapPin,
+  localisation: MapPin,
+};
+
 export const StandardTheme = ({ data }: { data: CVData }) => (
   <div
     className="p-12 h-full min-h-[297mm] bg-white text-slate-800 font-sans"
@@ -45,19 +56,19 @@ export const StandardTheme = ({ data }: { data: CVData }) => (
       </div>
 
       <div className="flex flex-col items-end gap-3 min-w-[40%]">
-        <div className="space-y-1 text-right">
-          <div className="flex items-center justify-end gap-2 text-[10px] font-bold text-slate-700">
-            <span>{data.personalInfo.email}</span>
-            <Mail size={12} className="text-blue-600" />
-          </div>
-          <div className="flex items-center justify-end gap-2 text-[10px] font-bold text-slate-700">
-            <span>{data.personalInfo.phone}</span>
-            <Phone size={12} className="text-blue-600" />
-          </div>
-          <div className="flex items-center justify-end gap-2 text-[10px] font-bold text-slate-700">
-            <span>{data.personalInfo.address}</span>
-            <MapPin size={12} className="text-blue-600" />
-          </div>
+        <div className="space-y-1 text-right w-full">
+          {data.personalInfo.contacts.map((c) => {
+            const Icon = CONTACT_ICONS[c.label.toLowerCase()] || Globe;
+            return (
+              <div
+                key={c.id}
+                className="flex items-center justify-end gap-2 text-[10px] font-bold text-slate-700"
+              >
+                <span className="truncate">{c.value}</span>
+                <Icon size={12} className="text-blue-600 shrink-0" />
+              </div>
+            );
+          })}
         </div>
 
         {data.personalInfo.socials.length > 0 && (
@@ -106,6 +117,13 @@ export const StandardTheme = ({ data }: { data: CVData }) => (
                 <p className="text-blue-600 font-bold text-[11px] mb-2 uppercase tracking-wide">
                   {exp.company}
                 </p>
+
+                {exp.description && (
+                  <p className="text-[11px] text-slate-700 leading-relaxed mb-2 font-medium italic">
+                    {exp.description}
+                  </p>
+                )}
+
                 <ul className="space-y-1.5 ml-1">
                   {exp.mission.map((m, i) => (
                     <li
