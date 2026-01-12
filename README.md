@@ -1,4 +1,5 @@
 # CV Generator Project
+[![Run ESLint on Pull Requests](https://github.com/Dibeo/ClearCV/actions/workflows/eslint.yml/badge.svg)](https://github.com/Dibeo/ClearCV/actions/workflows/eslint.yml)
 
 This repository contains a dynamic, multi-themed CV generation application built with React and Tailwind CSS. The project allows users to input their professional data once and toggle between various high-quality visual themes instantly.
 
