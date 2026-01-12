@@ -1,26 +1,7 @@
+import { Globe, ExternalLink } from "lucide-react";
 import type { CVData } from "../../../core/domain/cv.types";
-import {
-  Github,
-  Linkedin,
-  Globe,
-  Mail,
-  Phone,
-  ExternalLink,
-} from "lucide-react";
+import { CONTACT_ICONS, SOCIAL_ICONS, type ContactType, type SocialType } from "../../shared/icon";
 
-const SOCIAL_ICONS: Record<string, any> = {
-  github: Github,
-  linkedin: Linkedin,
-  portfolio: Globe,
-};
-
-const CONTACT_ICONS: Record<string, any> = {
-  email: Mail,
-  mail: Mail,
-  téléphone: Phone,
-  phone: Phone,
-  tel: Phone,
-};
 
 export const ElegantTheme = ({ data }: { data: CVData }) => (
   <div className="p-12 min-h-[297mm] bg-white text-slate-900 font-serif leading-normal" id="cv-to-print">
@@ -30,7 +11,7 @@ export const ElegantTheme = ({ data }: { data: CVData }) => (
       
       <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-1 text-[11px]">
         {data.personalInfo.contacts.map((c, i) => {
-          const Icon = CONTACT_ICONS[c.label.toLowerCase()] || Globe;
+          const Icon = CONTACT_ICONS[c.label.toLowerCase() as ContactType] || Globe;
           return (
             <div key={c.id} className="flex items-center gap-1">
               <Icon size={10} className="text-slate-600" />
@@ -42,7 +23,7 @@ export const ElegantTheme = ({ data }: { data: CVData }) => (
           );
         })}
         {data.personalInfo.socials.map((s, i) => {
-          const Icon = SOCIAL_ICONS[s.platform.toLowerCase()] || ExternalLink;
+          const Icon = SOCIAL_ICONS[s.platform.toLowerCase() as SocialType] || ExternalLink;
           return (
             <div key={s.id} className="flex items-center gap-1">
               <Icon size={10} className="text-slate-600" />

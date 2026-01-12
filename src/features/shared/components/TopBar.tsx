@@ -31,7 +31,7 @@ export const TopBar = () => {
     });
 
     try {
-      let dataForPdf = JSON.parse(JSON.stringify(data));
+      const dataForPdf = JSON.parse(JSON.stringify(data));
       if (
         data.personalInfo.photoUrl &&
         data.personalInfo.photoUrl.startsWith("http")
