@@ -18,7 +18,11 @@ export const FormExperiences = () => {
     updateData({ experiences: [...(data.experiences || []), newExp] });
   };
 
-  const updateExp = (id: string, field: keyof Experience, value: any) => {
+  const updateExp = <K extends keyof Experience>(
+    id: string,
+    field: K,
+    value: Experience[K]
+  ) => {
     const updated = data.experiences.map((exp) =>
       exp.id === id ? { ...exp, [field]: value } : exp
     );

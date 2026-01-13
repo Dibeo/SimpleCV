@@ -1,6 +1,6 @@
 import type { CVData } from "../../domain/cv.types";
 
-export const migrateCVData = (oldData: any): CVData => {
+export const migrateCVData = (oldData: CVData): CVData => {
   return {
     ...oldData,
     experiences: oldData?.experiences || [],

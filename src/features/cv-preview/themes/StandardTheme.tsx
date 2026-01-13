@@ -1,39 +1,6 @@
+import { Globe, ExternalLink, Languages, Award } from "lucide-react";
 import type { CVData } from "../../../core/domain/cv.types";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Globe,
-  Award,
-  Languages,
-  Github,
-  Linkedin,
-  Twitter,
-  Youtube,
-  Instagram,
-  ExternalLink,
-} from "lucide-react";
-
-const SOCIAL_ICONS: Record<string, any> = {
-  github: Github,
-  linkedin: Linkedin,
-  twitter: Twitter,
-  x: Twitter,
-  portfolio: Globe,
-  youtube: Youtube,
-  instagram: Instagram,
-};
-
-const CONTACT_ICONS: Record<string, any> = {
-  email: Mail,
-  mail: Mail,
-  téléphone: Phone,
-  phone: Phone,
-  tel: Phone,
-  adresse: MapPin,
-  address: MapPin,
-  localisation: MapPin,
-};
+import { CONTACT_ICONS, SOCIAL_ICONS, type ContactType, type SocialType } from "../../shared/icon";
 
 export const StandardTheme = ({ data }: { data: CVData }) => (
   <div
@@ -58,7 +25,7 @@ export const StandardTheme = ({ data }: { data: CVData }) => (
       <div className="flex flex-col items-end gap-3 min-w-[40%]">
         <div className="space-y-1 text-right w-full">
           {data.personalInfo.contacts.map((c) => {
-            const Icon = CONTACT_ICONS[c.label.toLowerCase()] || Globe;
+            const Icon = CONTACT_ICONS[c.label.toLowerCase() as ContactType] || Globe;
             return (
               <div
                 key={c.id}
@@ -75,7 +42,7 @@ export const StandardTheme = ({ data }: { data: CVData }) => (
           <div className="flex flex-col items-end gap-1.5 border-t border-slate-100 pt-3 w-full">
             {data.personalInfo.socials.map((social) => {
               const Icon =
-                SOCIAL_ICONS[social.platform.toLowerCase()] || ExternalLink;
+                SOCIAL_ICONS[social.platform.toLowerCase() as SocialType] || ExternalLink;
               const cleanUrl = social.url
                 .replace(/^https?:\/\//, "")
                 .replace(/^www\./, "")
