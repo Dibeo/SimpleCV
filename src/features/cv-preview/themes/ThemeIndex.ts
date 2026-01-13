@@ -4,6 +4,7 @@ import { ClassicTheme } from "./ClassicTheme";
 import { StandardTheme } from "./StandardTheme";
 import { HipsterTheme } from "./HipsterTheme";
 import { ElegantTheme } from "./ElegantTheme";
+import { NeoBentoTheme } from "./NeoBentoTheme";
 
 export const CV_THEMES = {
   classic: { component: ClassicTheme, label: "Classique" },
@@ -11,6 +12,7 @@ export const CV_THEMES = {
   standard: { component: StandardTheme, label: "Standard" },
   hipster: { component : HipsterTheme, label : "Hipster" },
   elegant: { component : ElegantTheme, label : "Elegant" },
+  neobento: { component : NeoBentoTheme, label : "NeoBento" },
 };
 
 export type ThemeId = keyof typeof CV_THEMES;
