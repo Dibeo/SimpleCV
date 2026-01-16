@@ -7,7 +7,7 @@ import { exportCvPdf } from "../../../core/services/pdf/cv-export.service";
 import { useTranslation } from "react-i18next";
 
 export const TopBar = () => {
-  const { t } = useTranslation("shared/topbar");
+  const { t } = useTranslation("topbar");
   const { theme, toggleTheme } = useTheme();
   const { data, reset } = useCvStore();
 
@@ -62,7 +62,7 @@ export const TopBar = () => {
     <header className="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-between px-8 transition-colors sticky top-0 z-50">
       <div className="flex items-center gap-4">
         <h1 className="font-bold text-slate-800 dark:text-white text-lg">
-          {t('title')}
+          {t("topbar.title")}
           <span className="text-blue-500">CV</span>
         </h1>
       </div>

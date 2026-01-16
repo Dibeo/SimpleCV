@@ -1,19 +1,19 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import Backend from 'i18next-http-backend';
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import Backend from "i18next-http-backend";
 
 i18n
-  .use(Backend) 
+  .use(Backend)
   .use(initReactI18next)
   .init({
-    fallbackLng: 'fr',
+    fallbackLng: "en",
     debug: true,
-    ns: ['shared/topbar'],
-    defaultNS: 'shared/topbar',
+    ns: ["common", "topbar", "sidebar"],
+    defaultNS: "common",
     backend: {
-      loadPath: `${import.meta.env.BASE_URL}lang/{{lng}}/{{ns}}.json`
+      loadPath: "/ClearCV/lang/{{lng}}/{{ns}}.json",
     },
     react: {
-      useSuspense: true
-    }
+      useSuspense: true,
+    },
   });
