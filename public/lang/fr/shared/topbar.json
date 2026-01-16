@@ -1,0 +1,18 @@
+{
+  "shared": {
+    "topbar": {
+      "title": "Simple",
+      "new": "Nouveau",
+      "save": "Sauvegarder",
+      "export_pdf": "Exporter en PDF",
+      "alerts": {
+        "warning": "Attention",
+        "name_required": "Veuillez renseigner votre nom.",
+        "preparing": "Préparation de l'impression...",
+        "print_info": "Le dialogue d'impression va s'ouvrir. Pensez à cocher 'Graphiques d'arrière-plan'.",
+        "error": "Erreur",
+        "export_failed": "Impossible d'ouvrir le module d'impression."
+      }
+    }
+  }
+}

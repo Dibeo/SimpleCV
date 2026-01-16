@@ -4,8 +4,10 @@ import { useCvStore } from "../../../core/store/useCvStore";
 import Swal from "sweetalert2";
 import { getBase64ImageFromURL } from "../../../core/utils/imageUtils";
 import { exportCvPdf } from "../../../core/services/pdf/cv-export.service";
+import { useTranslation } from "react-i18next";
 
 export const TopBar = () => {
+  const { t } = useTranslation("shared/topbar");
   const { theme, toggleTheme } = useTheme();
   const { data, reset } = useCvStore();
 
@@ -13,15 +15,15 @@ export const TopBar = () => {
     if (!data.personalInfo.fullName) {
       Swal.fire({
         icon: "warning",
-        title: "Attention",
-        text: "Veuillez renseigner votre nom.",
+        title: t("topbar.alerts.warning"),
+        text: t("topbar.alerts.name_required"),
       });
       return;
     }
 
     Swal.fire({
-      title: "Préparation de l'impression...",
-      text: "Le dialogue d'impression va s'ouvrir. Pensez à cocher 'Graphiques d'arrière-plan'.",
+      title: t("topbar.alerts.preparing"),
+      text: t("topbar.alerts.print_info"),
       icon: "info",
       timer: 2000,
       showConfirmButton: false,
@@ -42,7 +44,7 @@ export const TopBar = () => {
           );
           dataForPdf.personalInfo.photoUrl = base64;
         } catch (e) {
-          console.warn("Échec conversion photo, export sans image", e);
+          console.warn("Échec conversion photo", e);
         }
       }
       await exportCvPdf(dataForPdf);
@@ -50,8 +52,8 @@ export const TopBar = () => {
       console.error(error);
       Swal.fire({
         icon: "error",
-        title: "Erreur",
-        text: "Impossible d'ouvrir le module d'impression.",
+        title: t("topbar.alerts.error"),
+        text: t("alerts.export_failed"),
       });
     }
   };
@@ -60,7 +62,8 @@ export const TopBar = () => {
     <header className="h-16 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center justify-between px-8 transition-colors sticky top-0 z-50">
       <div className="flex items-center gap-4">
         <h1 className="font-bold text-slate-800 dark:text-white text-lg">
-          Clear<span className="text-blue-500">CV</span>
+          {t('title')}
+          <span className="text-blue-500">CV</span>
         </h1>
       </div>
 
@@ -82,21 +85,21 @@ export const TopBar = () => {
           onClick={reset}
           className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-red-500 transition-colors"
         >
-          <PlusCircle size={18} /> Nouveau
+          <PlusCircle size={18} /> {t("topbar.new")}
         </button>
 
         <button
-          onClick={reset}
-          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-red-500 transition-colors"
+          onClick={() => {}}
+          className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-500 transition-colors"
         >
-          <Save size={18} /> Sauvegarder
+          <Save size={18} /> {t("topbar.save")}
         </button>
 
         <button
           onClick={handleExportPdf}
           className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded-lg text-sm font-medium flex items-center gap-2 ml-2 transition-all shadow-md active:scale-95"
         >
-          <Download size={18} /> Exporter en PDF
+          <Download size={18} /> {t("topbar.export_pdf")}
         </button>
       </div>
     </header>
