@@ -15,9 +15,9 @@ export const LANGUAGES: Language[] = [
     label: 'English',
     flagUrl: 'https://flagcdn.com/w40/gb.png'
   },
-  {
+  /*{
     code: 'es',
     label: 'Español',
     flagUrl: 'https://flagcdn.com/w40/es.png'
-  }
+  }*/
 ] as const;
