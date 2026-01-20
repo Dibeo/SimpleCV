@@ -33,5 +33,12 @@
     "title": "Langues",
     "namePlaceholder": "Langue (ex: Anglais)",
     "levelPlaceholder": "Niveau (ex: C1, Maternel...)"
+  },
+  "certifications": {
+    "title": "Certificats & Permis",
+    "add": "Ajouter un certificat",
+    "namePlaceholder": "Nom (Permis B, AWS...)",
+    "issuerPlaceholder": "Organisme",
+    "yearPlaceholder": "Année"
   }
 }
