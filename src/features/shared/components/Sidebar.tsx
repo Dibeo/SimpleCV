@@ -6,7 +6,7 @@ import { CV_THEMES } from "../../cv-preview/themes/ThemeIndex";
 import { useTranslation } from "react-i18next";
 
 export const Sidebar = () => {
-  const { t } = useTranslation("sidebar");
+  const { t } = useTranslation("bar");
   const { data } = useCvStore();
   const { layout: currentUrlLayout } = useParams();
   const [isOpen, setIsOpen] = useState(false);

@@ -1,4 +1,8 @@
 {
+  "sidebar": {
+    "edit": "Editeur",
+    "design": "Design Template"
+  },
   "topbar": {
     "title": "Clear",
     "new": "Nouveau",
